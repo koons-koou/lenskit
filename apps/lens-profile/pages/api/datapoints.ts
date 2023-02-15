@@ -18,9 +18,10 @@ export default async function handler(
   }
 
   // get datapoints from cloudflare worker, use query params
-  let datapoints = await fetch(`${cfwork}?profileId=${profileId}&year=${year}`)
+  let datapoints = await fetch(`${cfwork}?profileId=${profileId}&year=${year}`,{mode:'cors'}).catch(()=>({ok:false}))
   // if datapoints are cached(ok && not empty array), return them, otherwise continue
   if (datapoints.ok) {
+    //@ts-ignore
     const points = await datapoints.json()
     if (points.length > 0) {
       console.log('fetched from cache')
@@ -48,7 +49,8 @@ export default async function handler(
       profileId,
       datapoints: points,
     }),
-  })
+    mode:'cors'
+  }).catch(()=>({ok:false}))
   if (!resp.ok) {
     console.log('error caching datapoints')
     return { error: 'error caching datapoints' }

@@ -13,18 +13,17 @@ export default function Home() {
     <>
       <section className="mt-32 flex flex-col space-y-6">
         <div className="mx-auto max-w-screen-xl px-4 pb-6 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">Lens Profile </h1>
-          <h2 className="mt-4 text-gray-700">Explore Lens Protocol Profiles and Publications</h2>
+          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">LensScore</h1>
+          <h2 className="mt-4 text-gray-700">探索 Lens Protocol 和有趣的内容</h2>
           <div className="mx-auto mt-4 grid max-w-lg text-sm leading-relaxed text-gray-500">
-            Available ranks are S+ (&gt; 1000), S (&gt; 500), A++ (&gt; 100), A+ (&gt; 50), and B+
-            (everyone). The values are calculated by using the total publications.
+            可用的等级是S，A，B，C，和 D (所有人)。这些数值是通过使用总发帖量、转发、评论、关注等来进行加权计算的（持续优化）。
           </div>
         </div>
         <form className="mx-auto mb-0 flex" onSubmit={handleSumbit}>
           <div className="relative">
             <input
               className="h-10 rounded-lg border border-gray-200 pr-10 pl-3 text-sm placeholder-gray-300 focus:z-10"
-              placeholder="Search Handle..."
+              placeholder="输入Lens handle..."
               type="text"
               onInput={(e) => setSearch(e.currentTarget.value)}
             />
@@ -44,8 +43,8 @@ export default function Home() {
           <Link href="/stani.lens" target={'_blank'}>
             stani.lens
           </Link>
-          <Link href="/lenster.lens" target={'_blank'}>
-            lenster.lens
+          <Link href="lensprotocol_cn.lens" target={'_blank'}>
+            lensprotocol_cn.lens
           </Link>
         </div>
         <div className="mx-auto flex flex-col space-y-3 px-4 pb-12 sm:space-x-0 md:flex-row md:space-y-0 md:space-x-3">
@@ -75,39 +74,19 @@ export default function Home() {
       <footer className="border-t border-gray-100">
         <div className="mx-auto max-w-screen-xl px-4 py-12">
           <Link className="inline-flex gap-1.5 text-lg  font-medium" href="/">
-            <span>LensKit</span>
+            <span>LensScore</span>
             <span aria-hidden="true" role="img">
-              🚀
+              🌿
             </span>
           </Link>
           <div className="mt-6 lg:flex lg:items-end lg:justify-between">
             <div>
               <p className="relin-paragraph-target max-w-md leading-relaxed text-gray-500">
-                A set of libraries for integrating lens protocol into your application.
+              用于探索用户在Lens上活跃程度的开源工具。
               </p>
               <div className="mt-4 flex space-x-3">
                 <a
-                  href="https://github.com/koons-koou/lenskit"
-                  rel="noreferrer"
-                  target="_blank"
-                  className="hover:opacity-75"
-                >
-                  <span className="sr-only"> GitHub </span>
-                  <svg
-                    aria-hidden="true"
-                    className="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                      fill-rule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
-                <a
-                  href="https://twitter.com/dao_leno"
+                  href="https://twitter.com/LensProtocol_CN"
                   rel="noreferrer"
                   target="_blank"
                   className="text-gray-700 transition hover:opacity-75"
@@ -126,7 +105,7 @@ export default function Home() {
               </div>
             </div>
             <p className="relin-paragraph-target mt-4 text-sm text-gray-500 lg:mt-0">
-              Created by lenschain.
+              &copy; lenschina.
             </p>
           </div>
         </div>

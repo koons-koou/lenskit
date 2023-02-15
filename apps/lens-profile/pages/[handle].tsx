@@ -6,9 +6,11 @@ import Placeholder from '../components/Placeholder'
 import ProfileStats from '../components/ProfileStats'
 import { fetchDataPoints } from '../lib/datapoints'
 
-export default function Profile() {
+export default function Profile({
+  initHandle,
+}: { initHandle?: string }): JSX.Element {
   const router = useRouter()
-  const handle = router.query.handle?.toString()
+  const handle = initHandle ?? router.query.handle?.toString()
   const realhandle =
     handle == 'lensprotocol' ? handle : handle?.endsWith('.lens') ? handle : handle + '.lens'
   const { profiles, loading, error } = useProfiles({ handles: [realhandle] })
@@ -23,29 +25,29 @@ export default function Profile() {
   )
 
   if (loading) {
-    return <Placeholder message="loading ..." description="first time loading may take a while" />
+    return <Placeholder message="加载中 ..." description="首次加载可能需要一些时间" />
   } else if (!profiles || profiles.length == 0) {
-    return <Placeholder message="404 | not found" />
+    return <Placeholder message="404 | 未找到" />
   } else if (!data2022 || !data2023) {
-    return <Placeholder message="loading ..." description="first time loading may take a while" />
+    return <Placeholder message="加载中 ..." description="首次加载可能需要一些时间" />
   }
 
   if (data2022?.error || data2023.error) {
     return (
       <Placeholder
-        message="error | cloudflare free tier is over"
-        description="please try another day. 
-        Thanks for your patience, 
-        will fix this soon."
+        message="错误 | Cloudflare免费等级已结束"
+        description="请改日再试。
+        谢谢你的耐心。
+        将很快解决这个问题。"
       />
     )
   }
 
   return (
-    <div className="mx-auto my-12 mt-12 max-w-screen-xl">
+    <div className="mx-auto md:my-12 md:mt-12 max-w-screen-xl w-full h-full"> 
       <div
         className={
-          `mx-auto flex h-3/5 w-full flex-col items-center justify-center space-y-10 rounded-2xl px-12 py-12 shadow-2xl md:w-3/5 md:px-3 ` +
+          `mx-auto max-w-screen-md flex flex-col items-center space-y-10 rounded-2xl p-6 md:p-12 shadow-2xl md:px-3 ` +
           randomGradient()
         }
       >

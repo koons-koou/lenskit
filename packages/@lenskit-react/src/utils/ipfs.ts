@@ -5,7 +5,7 @@ const projectId = INFURA_PROJECT_ID
 const secret = INFURA_SECRET
 
 if (!projectId || !secret) {
-  throw new Error('Must define INFURA_PROJECT_ID and INFURA_SECRET in the .env to run this')
+  throw new Error('必须在.env中定义INFURA_PROJECT_ID和INFURA_SECRET才能运行。')
 }
 
 const client = create({

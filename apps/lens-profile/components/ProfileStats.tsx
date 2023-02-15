@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/24/solid'
 import { useProfiles } from '@lenskit/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import Placeholder from './Placeholder'
 
 interface ProfileStatsProps {
@@ -28,9 +29,10 @@ const statsIcons: any = {
 }
 
 const ipfsGateway = 'https://lens.infura-ipfs.io'
+const lensFrensUrl = 'https://www.lensfrens.xyz'
 const ProfileStats: React.FC<ProfileStatsProps> = ({ handle, profileId, ownedBy }) => {
   if (!profileId && !handle && !ownedBy) {
-    throw new Error('Must provide one of handle, profileId, or ownedBy')
+    throw new Error('必须提供handle、profileId或ownerBy中的一个。')
   }
 
   let queryOptions: any = {}
@@ -46,13 +48,24 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({ handle, profileId, ownedBy 
   const profile = profiles?.[0]
 
   if (loading || !profile) {
-    return <Placeholder message="loading ... - first time loading may take a while" />
+    return <Placeholder message="正在加载... - 首次加载可能需要一些时间" />
   }
+  const tr: any = {
+    "totalFollowers":"总粉丝数", // 20
+    "totalFollowing":"总关注数", // 5
+    "totalPosts":"总发帖量", // 5
+    "totalComments":"总评论量", // 5
+    "totalMirrors":"总转贴量", // 5
+    "totalPublications":"总发布量", // 30
+    "totalCollects":"总收藏量" //  30
+  }
+
+
 
   return (
     <div className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-4 rounded-2xl bg-gradient-to-br from-lime-50 to-teal-100  p-7 shadow-md">
       <div className="col-span-1">
-        <div className="flex items-center justify-between space-x-3">
+        <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 items-center justify-between space-x-3">
           <div className="flex items-center space-x-5">
             <div className="flex-shrink-0">
               <div className="relative">
@@ -74,10 +87,13 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({ handle, profileId, ownedBy 
               <p className="text-sm font-medium text-gray-700">{profile.bio}</p>
             </div>
           </div>
-          <div className="bg-basil text-peas rounded-md px-2 py-1 text-2xl">{profile.handle}</div>
+          <div>
+            <p className="mb-2 text-sm font-medium text-gray-700 text-center md:text-right">在 Lens 上关注</p>
+            <Link className="bg-basil text-peas rounded-md px-2 py-1 text-2xl" href={`${lensFrensUrl}/${profile.handle}`} target={'_blank'} >{profile.handle}</Link>
+          </div>
         </div>
 
-        <div className="ml-12 flex flex-col items-center sm:flex-row">
+        <div className="md:ml-12 flex flex-col items-center sm:flex-row mt-6 md:mt-0">
           <div className="mt-4 grid sm:grid-cols-1 md:grid-cols-1">
             {Object.keys(profile.stats)
               .filter((stat: string) => (stat === '__typename' ? false : true))
@@ -87,8 +103,9 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({ handle, profileId, ownedBy 
                     <div className="flex h-4 w-4 items-center justify-center rounded-full text-teal-600">
                       {statsIcons[stat]}
                     </div>
-                    <div className="font-semibold capitalize text-teal-700">
-                      {stat.replace(/([A-Z])/g, ' $1').trim()}:
+                    <div className="font-semibold text-teal-700">
+                      {tr[stat]}
+                      {/* {stat.replace(/([A-Z])/g, ' $1').trim()}: */}
                     </div>
                   </div>
                   <span className="ml-3 font-semibold text-teal-700">
@@ -99,7 +116,7 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({ handle, profileId, ownedBy 
               ))}
           </div>
           <div className="mx-auto mt-3">
-            <CircleProgressBar level={publicationsCountToLevel(profile.stats.totalPublications)} />
+            <CircleProgressBar level={publicationsCountToLevel(profile.stats.totalCollects)} />
           </div>
         </div>
       </div>
@@ -108,7 +125,7 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({ handle, profileId, ownedBy 
 }
 
 interface CircleProgressBarProps {
-  level: string // A value between S+、S、A++、A+、B+
+  level: string // A value between D、C、B、A、S
 }
 export const CircleProgressBar: React.FC<CircleProgressBarProps> = (props) => {
   const progress = levelToProgress(props.level)
@@ -176,35 +193,35 @@ function formatNumber(num: number): string {
 
 function levelToProgress(level: string) {
   switch (level) {
-    case 'S+':
-      return 100
     case 'S':
+      return 100
+    case 'A':
       return 80
-    case 'A++':
+    case 'B':
       return 60
-    case 'A+':
+    case 'C':
       return 40
-    case 'B+':
+    case 'D':
       return 20
     default:
       return 0
   }
 }
-
+// D、C、B、A、S
 function publicationsCountToLevel(count: number) {
   if (count >= 1000) {
-    return 'S+'
-  }
-  if (count >= 500) {
     return 'S'
   }
+  if (count >= 500) {
+    return 'A'
+  }
   if (count >= 100) {
-    return 'A++'
+    return 'B'
   }
   if (count >= 50) {
-    return 'A+'
+    return 'C'
   }
-  return 'B+'
+  return 'D'
 }
 
 export default ProfileStats

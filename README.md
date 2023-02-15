@@ -104,3 +104,5 @@ const { publications, loading, error } = usePublications({
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+npm i -g yarn && yarn install && yarn workspace @lenskit/client run build && yarn workspace @lenskit/react run build && yarn workspace lens-profile run build

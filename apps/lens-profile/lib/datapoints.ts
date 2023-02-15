@@ -51,9 +51,10 @@ const cfwork = 'https://kit.lenschina.workers.dev'
 async function fetchDataPoints(profileId: string, year: number) {
   try {
     // get datapoints from cloudflare worker, use query params
-    let datapoints = await fetch(`${cfwork}?profileId=${profileId}&year=${year}`)
+    let datapoints = await fetch(`${cfwork}?profileId=${profileId}&year=${year}`, {mode:'cors'}).catch(()=>({ok:false}))
     // if datapoints are cached(ok && not empty array), return them, otherwise continue
     if (datapoints.ok) {
+      //@ts-ignore
       const points = await datapoints.json()
       if (points.length > 0) {
         console.log('fetched from cache')
@@ -80,7 +81,8 @@ async function fetchDataPoints(profileId: string, year: number) {
         profileId,
         datapoints: points,
       }),
-    })
+      mode:'cors'
+    }).catch(()=>({ok:false}))
 
     return points
   } catch (error) {

@@ -29,7 +29,7 @@ export const useAuth = () => {
       // check challenge text
       const text = challengeResponse.data?.challenge?.text
       if (!text) {
-        throw new Error('No challenge text')
+        throw new Error('没有 Challenge 文本')
       }
 
       // sign the text with the wallet
@@ -39,7 +39,7 @@ export const useAuth = () => {
       const accessTokens = await authenticate({ variables: { request: { address, signature } } })
       const token = accessTokens.data?.authenticate?.accessToken
       if (!token) {
-        throw new Error('No access token')
+        throw new Error('没有访问令牌')
       }
 
       setAuthenticationToken(token)
