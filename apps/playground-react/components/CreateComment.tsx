@@ -15,7 +15,7 @@ export default function CreateComment() {
       locale: 'en-US',
       content:
         'Comments allow users to provide additional commentary  on other publications.They are treated the same as base [Publications](https://docs.lens.xyz/docs/publication) with extra checks and features. ',
-      external_url: 'https://github.com/daoleno/lenskit',
+      external_url: 'https://github.com/koons-koou/lenskit',
       image: null,
       imageMimeType: null,
       attributes: [],

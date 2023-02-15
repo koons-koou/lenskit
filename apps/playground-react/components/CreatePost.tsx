@@ -14,7 +14,7 @@ export default function CreatePost() {
       locale: 'en-US',
       content:
         'Publications are the lifeblood of the Lens Protocol. They are all of the original content, comments, and mirrors produced by creators, curators, and users alike. Publications come in three primary types: posts, comments, and mirrors. Posts are the base object, with mirror and comment providing additional functionality. ',
-      external_url: 'https://github.com/daoleno/lenskit',
+      external_url: 'https://github.com/koons-koou/lenskit',
       image: null,
       imageMimeType: null,
       name: 'lenskit',

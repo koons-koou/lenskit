@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "LensKit UI components for the Lens Protocol",
   "main": "index.js",
-  "repository": "https://github.com/daoleno/lenskit",
+  "repository": "https://github.com/koons-koou/lenskit",
   "license": "MIT",
   "private": true,
   "workspaces": [

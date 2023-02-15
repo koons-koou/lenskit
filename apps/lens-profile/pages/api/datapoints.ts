@@ -4,7 +4,7 @@ import { type CalendarData } from 'react-activity-calendar'
 import { generateDataPoints } from '../../lib/datapoints'
 import lensClient from '../../lib/lens-client'
 
-const cfwork = 'https://lenskit-profile.daoleno.workers.dev/'
+const cfwork = 'https://kit.lenschina.workers.dev'
 
 export default async function handler(
   req: NextApiRequest,

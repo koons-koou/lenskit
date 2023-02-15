@@ -21,7 +21,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/daoleno/lenskit.git",
+        "url": "git+https://github.com/koons-koou/lenskit.git",
         "directory": "packages/@lenskit-react"
     },
     "publishConfig": {

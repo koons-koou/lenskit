@@ -87,7 +87,7 @@ export default function Home() {
               </p>
               <div className="mt-4 flex space-x-3">
                 <a
-                  href="https://github.com/daoleno/lenskit"
+                  href="https://github.com/koons-koou/lenskit"
                   rel="noreferrer"
                   target="_blank"
                   className="hover:opacity-75"
@@ -126,7 +126,7 @@ export default function Home() {
               </div>
             </div>
             <p className="relin-paragraph-target mt-4 text-sm text-gray-500 lg:mt-0">
-              Created by daoleno.
+              Created by lenschain.
             </p>
           </div>
         </div>

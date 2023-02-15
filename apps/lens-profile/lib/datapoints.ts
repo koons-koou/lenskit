@@ -46,7 +46,7 @@ const generateDataPoints = (publications: Array<any>, year: any) => {
   return yearData
 }
 
-const cfwork = 'https://lenskit-profile.daoleno.workers.dev/'
+const cfwork = 'https://kit.lenschina.workers.dev'
 
 async function fetchDataPoints(profileId: string, year: number) {
   try {
