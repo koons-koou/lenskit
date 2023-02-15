@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npx @cloudflare/next-on-pages --experimental-minify",
+    "cloudflare:build": "node node_modules/@cloudflare/next-on-pages/bin/index.js --experimental-minify",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
@@ -12,6 +12,7 @@
     "wrangler-deploy": "wrangler publish"
   },
   "dependencies": {
+    "@cloudflare/next-on-pages": "^0.3.0",
     "@cloudflare/workers-types": "^4.20221111.1",
     "@heroicons/react": "^2.0.13",
     "@lenskit/client": "*",
