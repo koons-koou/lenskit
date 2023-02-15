@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "npm i -g yarn && yarn workspace @lenskit/client run build && yarn workspace @lenskit/react run build",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "wrangler-start": "wrangler dev",
     "wrangler-deploy": "wrangler publish"
