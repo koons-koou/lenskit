@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "cloudflare:build": "node ../../node_modules/@cloudflare/next-on-pages/bin/index.js --experimental-minify",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
