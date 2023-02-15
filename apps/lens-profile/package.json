@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "npm i -g yarn && yarn workspace @lenskit/client run build && yarn workspace @lenskit/react run build",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "wrangler-start": "wrangler dev",
     "wrangler-deploy": "wrangler publish"
@@ -15,8 +14,8 @@
   "dependencies": {
     "@cloudflare/workers-types": "^4.20221111.1",
     "@heroicons/react": "^2.0.13",
-    "@lenskit/client": "0.0.1",
-    "@lenskit/react": "0.0.1",
+    "@lenskit/client": "*",
+    "@lenskit/react": "*",
     "@next/font": "13.1.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",

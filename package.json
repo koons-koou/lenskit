@@ -12,9 +12,11 @@
   ],
   "scripts": {
     "generate": "graphql-codegen",
+    "predev": "yarn generate",
+    "prebuild": "yarn generate",
     "dev": "turbo run dev",
-    "build": "yarn workspace @lenskit/client run build && yarn workspace @lenskit/react run build && yarn workspace lens-profile run build",
-    "start": "yarn workspace lens-profile run start",
+    "build": "turbo run build",
+    "start": "turbo run start",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "publish-packages": "changeset version && changeset publish"
