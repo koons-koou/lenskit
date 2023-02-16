@@ -9,6 +9,7 @@ import {
   UsersIcon,
 } from '@heroicons/react/24/solid'
 import { useProfiles } from '@lenskit/react'
+import { stat } from 'fs'
 import Image from 'next/image'
 import Link from 'next/link'
 import Placeholder from './Placeholder'
@@ -116,7 +117,7 @@ const ProfileStats: React.FC<ProfileStatsProps> = ({ handle, profileId, ownedBy 
               ))}
           </div>
           <div className="mx-auto mt-3">
-            <CircleProgressBar level={publicationsCountToLevel(profile.stats.totalCollects)} />
+            <CircleProgressBar level={superComputingLevel(profile.stats)} />
           </div>
         </div>
       </div>
@@ -219,6 +220,24 @@ function publicationsCountToLevel(count: number) {
     return 'B'
   }
   if (count >= 50) {
+    return 'C'
+  }
+  return 'D'
+}
+
+// 
+function superComputingLevel(stats: { totalFollowers:number,totalFollowing:number,totalPosts:number,totalComments:number,totalMirrors:number,totalPublications:number,totalCollects:number }){
+  const count = (1 + Math.sqrt(stats.totalFollowers)) * (Math.sqrt(stats.totalFollowing + stats.totalPublications) + Math.sqrt(stats.totalCollects/stats.totalPublications) + 1 )
+  if (count >= 4000) {
+    return 'S'
+  }
+  if (count >= 1500) {
+    return 'A'
+  }
+  if (count >= 500) {
+    return 'B'
+  }
+  if (count >= 100) {
     return 'C'
   }
   return 'D'
