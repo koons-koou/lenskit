@@ -259,7 +259,10 @@ function computingLevel(stats: { totalFollowers: number, totalFollowing: number,
   return 'D'
 }
 
-function superLevel(stats: { totalFollowers: number, totalFollowing: number, totalPosts: number, totalComments: number, totalMirrors: number, totalPublications: number, totalCollects: number }, publications: [{ date: string, count: number, level: number }]) {
+function superLevel(
+  stats: { totalFollowers: number, totalFollowing: number, totalPosts: number, totalComments: number, totalMirrors: number, totalPublications: number, totalCollects: number }, 
+  publications: [{ date: string, count: number, level: number }]
+  ) {
   let ascore = 1 - Math.exp(-Math.sqrt(stats.totalFollowers + 1) / 25)
   let bscore = 0
   for (let i = 0; i < publications.length; i++) {

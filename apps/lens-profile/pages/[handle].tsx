@@ -59,6 +59,7 @@ export default function Profile({
     if(ref.current && typeof window !== 'undefined'){
       setSaveLoading(true)
       html2canvas(ref.current,{
+        //@ts-ignore
         dpi: window.devicePixelRatio * 2, // 对应屏幕的dpi，适配高清屏，解决canvas模糊问题
         scale: 2, // 缩放
         allowTaint: true, // 是否使用图片跨域
