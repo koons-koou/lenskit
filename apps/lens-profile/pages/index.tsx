@@ -105,7 +105,7 @@ export default function Home() {
               </div>
             </div>
             <p className="relin-paragraph-target mt-4 text-sm text-gray-500 lg:mt-0">
-              &copy; lenschina.
+              &copy; <Link href="https://lenschina.xyz" target="_blank" className="hover:text-teal-600"> lenschina </Link>
             </p>
           </div>
         </div>

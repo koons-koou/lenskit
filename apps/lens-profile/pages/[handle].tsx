@@ -93,8 +93,8 @@ export default function Profile({
         {data2023 && <LensCalendar profileId={profileId} year={2023} datapoints={data2023} />}
         {data2022 && <LensCalendar profileId={profileId} year={2022} datapoints={data2022} />}
         <div className="mt-4 px-8 w-full flex flex-col md:flex-row items-center justify-between text-white text-left">
-          <Link href={homeUrl+'/'+realhandle} target="_blank" className="hover:text-teal-800">{homeUrl+'/'+realhandle}</Link>
-          <Image
+          <Link href={homeUrl} target="_blank" className="hover:text-teal-800">{homeUrl}</Link>
+          {/* <Image
                   className="rounded-full"
                   src={'/lens-logo-china.png'}
                   alt=""
@@ -102,7 +102,7 @@ export default function Profile({
                   height={62}
                   placeholder="blur"
                   blurDataURL="/lens-logo-china.png"
-                />
+                /> */}
         </div>
       </div>
       <button disabled={saveLoading} onClick={()=>downloadImage()} className="fixed md:absolute bottom-10 right-5 md:right-20 md:top-10 rounded-full bg-gray-100 text-teal-600 shadow-xl cursor-pointer p-2 w-12 h-12 flex items-center justify-center text-center hover:rotate-12 hover:text-green-700">
