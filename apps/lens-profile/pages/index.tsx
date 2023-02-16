@@ -11,7 +11,7 @@ export default function Home() {
   }
   return (
     <>
-      <section className="mt-32 flex flex-col space-y-6">
+      <section className="mt-20 md:mt-32 flex flex-col space-y-6">
         <div className="mx-auto max-w-screen-xl px-4 pb-6 text-center">
           <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">LensScore</h1>
           <h2 className="mt-4 text-gray-700">探索 Lens Protocol 和有趣的内容</h2>

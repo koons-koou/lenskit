@@ -65,24 +65,26 @@ export default function Profile({
         allowTaint: true, // 是否使用图片跨域
         useCORS: true, // 是否使用图片跨域
         backgroundColor: null,
-      }).then((canvas: any) => {
-        const save_url = canvas.toDataURL("image/png");
+      }).then(async (canvas: any) => {
+        const save_url = await canvas.toDataURL("image/png");
         const a = document.createElement("a");
         document.body.appendChild(a);
         a.href = save_url;
-        a.target = '_blank'
-        a.download = `${realhandle}.png`;
+        a.target = '_blank';
+        a.download = `${realhandle.replace(/.lens$/,'')}.png`;
         a.click();
-        setSaveLoading(false);
+        setTimeout(()=>{
+          setSaveLoading(false);
+        },500);
       }).catch(()=>setSaveLoading(false));
     }
   }
 
   return (
-    <div className="mx-auto md:my-12 md:mt-12 max-w-screen-xl w-full h-full relative" > 
+    <div className="md:my-12 md:mt-12 md:relative max-w-screen-xl mx-auto" > 
       <div
         className={
-          `mx-auto w-full max-w-screen-md flex flex-col items-center justify-start pt-12 pb-4 px-3 rounded-2xl ` +
+          `mx-auto max-w-screen-md flex flex-col items-center justify-start pt-12 pb-4 px-3 rounded-2xl ` +
           randomGradient()
         }
         ref={ref}
@@ -90,7 +92,7 @@ export default function Profile({
         <ProfileStats handle={realhandle} datapoints={[...data2022,...data2023]}/>
         {data2023 && <LensCalendar profileId={profileId} year={2023} datapoints={data2023} />}
         {data2022 && <LensCalendar profileId={profileId} year={2022} datapoints={data2022} />}
-        <div className="mt-4 px-8 w-full flex items-center justify-between text-white text-left">
+        <div className="mt-4 px-8 w-full flex flex-col md:flex-row items-center justify-between text-white text-left">
           <Link href={homeUrl+'/'+realhandle} target="_blank" className="hover:text-teal-800">{homeUrl+'/'+realhandle}</Link>
           <Image
                   className="rounded-full"
@@ -103,8 +105,8 @@ export default function Profile({
                 />
         </div>
       </div>
-      <button disabled={saveLoading} onClick={()=>downloadImage()} className="absolute right-0 md:right-10 top-20 mt-10 rounded-full bg-gray-100 text-teal-600 shadow-xl cursor-pointer p-2 w-12 h-12 flex items-center justify-center text-center hover:rotate-12 hover:text-green-700">
-        {saveLoading ? '截图中...' : <ShareIcon className="w-8 h-8"/> }
+      <button disabled={saveLoading} onClick={()=>downloadImage()} className="fixed md:absolute bottom-10 right-5 md:right-20 md:top-10 rounded-full bg-gray-100 text-teal-600 shadow-xl cursor-pointer p-2 w-12 h-12 flex items-center justify-center text-center hover:rotate-12 hover:text-green-700">
+        {saveLoading ? '生成中...' : <ShareIcon className="w-8 h-8"/> }
       </button>
     </div>
   )

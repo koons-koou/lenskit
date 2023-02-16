@@ -2,6 +2,7 @@ import { LensKitProvider } from '@lenskit/react'
 import '@lenskit/react/styles.css'
 import { getDefaultWallets } from '@rainbow-me/rainbowkit'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { useEffect } from 'react'
@@ -51,13 +52,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Script
-        async
-        data-goatcounter="https://lens-profile.goatcounter.com/count"
-        src="//gc.zgo.at/count.js"
-        strategy="afterInteractive"
-      />
-
+      <Head>
+        <title>LensScore | Lenschina</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
       <WagmiConfig client={wagmiClient}>
         <LensKitProvider apiEndpoint="https://api.lens.dev">
           <Component {...pageProps} />
