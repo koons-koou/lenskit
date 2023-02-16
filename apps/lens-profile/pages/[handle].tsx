@@ -15,6 +15,7 @@ import html2canvas from 'html2canvas';
 import Image from 'next/image'
 import Link from 'next/link'
 
+const homeUrl = 'https://score.lenschina.xyz';
 export default function Profile({
   initHandle,
 }: { initHandle?: string }): JSX.Element {
@@ -89,7 +90,7 @@ export default function Profile({
         {data2023 && <LensCalendar profileId={profileId} year={2023} datapoints={data2023} />}
         {data2022 && <LensCalendar profileId={profileId} year={2022} datapoints={data2022} />}
         <div className="mt-4 px-8 w-full flex items-center justify-between text-white text-left">
-          <Link href={window.location.href} target="_blank" className="hover:text-teal-800">{window.location.href}</Link>
+          <Link href={homeUrl+'/'+realhandle} target="_blank" className="hover:text-teal-800">{homeUrl+'/'+realhandle}</Link>
           <Image
                   className="rounded-full"
                   src={'/lens-logo-china.png'}

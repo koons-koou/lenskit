@@ -15,6 +15,7 @@ interface ProfileStatsProps {
 
 const ipfsGateway = 'https://lens.infura-ipfs.io'
 const lensFrensUrl = 'https://www.lensfrens.xyz'
+
 const ProfileStats: React.FC<ProfileStatsProps> = ({ handle, profileId, ownedBy, datapoints }) => {
   if (!profileId && !handle && !ownedBy) {
     throw new Error('必须提供handle、profileId或ownerBy中的一个。')
